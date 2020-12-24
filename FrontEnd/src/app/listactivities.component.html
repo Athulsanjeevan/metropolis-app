@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-content>
+        <h1>Activity Name List</h1>
+        <mat-list-item>ActvityName<span></span>ScheduledDate<span></span>StreetName<span></span>streetstatus<span></span>ActivityType<span></span>AlternateStreet</mat-list-item>
+        <mat-list *ngFor="let activity of activities">
+            <mat-list-item>{{activity.activityName}}<span></span>{{activity.scheduledDate}} <span></span>{{activity.streetName}}<span></span>{{activity.isClosed }}<span></span>{{activity.activityType }}<span></span>{{activity.alternativeStreet }}</mat-list-item>
+            
+        </mat-list>
+  </mat-card-content>     
+</mat-card>
+  

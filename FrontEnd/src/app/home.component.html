@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <button mat-button routerLink="/">Home</button>
+  <span style="flex:1 1 auto"></span>
+  <button mat-button routerLink="/list">ListActivities</button>
+  <button mat-button *ngIf="isUserAuthenticated()" routerLink="/addactivity" routerLinkActive="active" >Add Activity</button>
+  <button mat-button routerLink="/contact">Contacts</button>
+  <button mat-button *ngIf="!isUserAuthenticated()" routerLink="/login">Login</button>
+  <button mat-button *ngIf="isUserAuthenticated()" (click)="logOut()" routerLink="/">LogOut</button>
+</mat-toolbar>
+
+

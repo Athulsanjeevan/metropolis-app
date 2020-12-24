@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-content>
+  <form>
+    <mat-form-field class="halfwidth">
+      <mat-label>Activity Name</mat-label>
+      <input [(ngModel)]="activity.activityName" name="activityName" matInput >
+    </mat-form-field>
+    <br>
+    <mat-form-field class="halfwidth">
+      <mat-label>Activity Type</mat-label>
+      <input [(ngModel)]="activity.activityType" name="activityType" matInput >
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="halfwidth">
+      <mat-label>Scheduled Date</mat-label>
+      <input [(ngModel)]="activity.scheduledDate" name="scheduledDate" matInput >
+    </mat-form-field>
+    <br>
+    <mat-form-field class="halfwidth">
+      <mat-label>Street Name</mat-label>
+      <input [(ngModel)]="activity.streetName" name="streetName" matInput >
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="halfwidth">
+      <mat-label>Alternative Street</mat-label>
+      <input [(ngModel)]="activity.alternativeStreet" name="alternateStreet" matInput >
+    </mat-form-field>
+    <br>
+    <mat-form-field class="halfwidth">
+      <mat-label>Is Closed?</mat-label>
+      <input [(ngModel)]="activity.isClosed" name="isClosed" matInput >
+    </mat-form-field>
+  </form>
+</mat-card-content>
+<mat-card-actions>
+  <button (click)="post(activity)" mat-button>Add</button>
+</mat-card-actions>
+</mat-card>
