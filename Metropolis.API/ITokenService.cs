@@ -5,7 +5,7 @@ namespace Metropolis.API
 {
     public interface ITokenService
     {
-        string GenerateAccessToken();
+        string GenerateAccessToken(IEnumerable<Claim> claims);
         string GenerateRefreshToken();
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
        

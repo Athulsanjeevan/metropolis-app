@@ -44,7 +44,7 @@ namespace Metropolis.API.Controllers
             {
                 return BadRequest("Invalid client request");
             }
-            var newAccessToken = _tokenService.GenerateAccessToken();
+            var newAccessToken = _tokenService.GenerateAccessToken(principal.Claims);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
 
             user.RefreshToken = newRefreshToken;

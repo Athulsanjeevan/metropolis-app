@@ -12,7 +12,7 @@ namespace Metropolis.API
 {
     public class TokenService : ITokenService
     {
-        public string GenerateAccessToken()
+        public string GenerateAccessToken(IEnumerable<Claim> claims)
         {
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -20,6 +20,7 @@ namespace Metropolis.API
             var tokeOptions = new JwtSecurityToken(
                 issuer: "http://localhost:44335",
                 audience: "http://localhost:44335",
+                claims:claims,
                 expires: DateTime.Now.AddMinutes(1),
                 signingCredentials: signinCredentials
             );

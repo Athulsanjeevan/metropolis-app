@@ -48,7 +48,6 @@ namespace Metropolis.API
             services.AddScoped<IActivityDal, ActivityDal>();
             services.AddScoped<IContactDal, ContactDal>();
             services.AddScoped<IContactBll, ContactBll>();
-            services.AddScoped<IAdminBll, AdminBll>();
             services.AddScoped<ITokenService, TokenService>();
 
             services.AddAuthentication(opt => {

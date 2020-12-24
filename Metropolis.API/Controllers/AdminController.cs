@@ -20,23 +20,26 @@ namespace Metropolis.API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly IAdminBll _AdminBLL;
         private readonly IActivityBll _ActivityBLL;
         private readonly ApplicationDbContext _db;
         readonly ITokenService _tokenService;
-        public AdminController(IAdminBll AdminBLL, IActivityBll ActivityBLL, ApplicationDbContext db, ITokenService tokenService)
+        public AdminController( IActivityBll ActivityBLL, ApplicationDbContext db, ITokenService tokenService)
         { 
-            _AdminBLL = AdminBLL;
             _ActivityBLL = ActivityBLL;
             _db = db;
             _tokenService = tokenService;
         }
+
+
+
         [HttpGet]
         [Authorize]
         public List<Activity> GetAll()
         {
             return _ActivityBLL.GetActivitiesForTheDay();
         }
+
+
         
         [HttpPost]
         public IActionResult UserAuth(Admin user)
@@ -44,7 +47,11 @@ namespace Metropolis.API.Controllers
             var user_exist = _db.Admins.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
             if (user_exist!=null)
             {
-                var accessToken = _tokenService.GenerateAccessToken();
+                 var claims = new List<Claim>
+                 {
+                    new Claim(ClaimTypes.Name, user.Email)
+                 };
+                var accessToken = _tokenService.GenerateAccessToken(claims);
                 var refreshToken = _tokenService.GenerateRefreshToken();
                 user_exist.RefreshToken = refreshToken;
                 user_exist.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);

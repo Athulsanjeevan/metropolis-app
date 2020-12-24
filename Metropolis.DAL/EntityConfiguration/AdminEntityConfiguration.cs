@@ -13,7 +13,9 @@ namespace Metropolis.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Admin> builder)
         {
-            builder.HasKey(i => i.Email);
+            builder.HasKey(i => i.Id);
+            builder.Property(u => u.Email)
+                   .IsRequired();
 
             builder.Property(t => t.Password)
                    .IsRequired();
