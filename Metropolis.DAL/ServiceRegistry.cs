@@ -23,7 +23,7 @@ namespace Metropolis.DAL
         {
             var ConnectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(ConnectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(ConnectionString));
 
         }
     }
